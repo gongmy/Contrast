@@ -125,6 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Contrast_UserInfoController.cs" />
     <Compile Include="Controllers\CustomTabController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -592,7 +593,6 @@
     <Content Include="Views\CustomTab\EditCustomTable.cshtml" />
     <Content Include="Views\Shared\_ShowOrAddLayout.cshtml" />
     <Content Include="Views\CustomTab\CustomTableInfo.cshtml" />
-    <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Views\Organization\OrgContrast.cshtml" />
   </ItemGroup>
   <PropertyGroup>
