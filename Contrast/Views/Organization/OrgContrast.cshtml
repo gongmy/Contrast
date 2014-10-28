@@ -8,4 +8,48 @@
         
     </style>
 }
-<h2>OrgContrast</h2>
+@model System.Data.DataTable
+<div>
+    <table class="Tab_list" cellpadding="0" cellspacing="0">
+        <tr>
+            <th>
+                组织机构
+            </th>
+             <th>
+                提供资金(万)
+            </th>
+             <th>
+                提供周期(月)
+            </th>
+             <th>
+                年利息
+            </th>
+             <th>
+                公司名称
+            </th>
+             <th>
+                需求资金(万)
+            </th>
+             <th>
+                需求周期(月)
+            </th>
+             <th>
+                可承受年利息
+            </th>
+        </tr>
+        @foreach (System.Data.DataRow item in Model.Rows)
+        {
+            <tr>
+                <td>@item["Name"]</td>
+                <td>@item["ProvideMoney"]</td>
+                <td>@item["BeginMonth"] - @item["EndMonth"]</td>
+                <td>@item["DemandInterest"]%</td>
+                <td>@item["CompanyName"]</td>
+                <td>@item["DemandMoney"]</td>
+                <td>@item["DemandMonth"]</td>
+                <td>@item["AcceptInterest"]%</td>
+
+            </tr>
+        }
+    </table>
+</div>

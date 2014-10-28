@@ -29,9 +29,13 @@ namespace CustomTab1.Controllers
 
         public ActionResult OrgContrast()
         {
-            ViewBag.Menu = 3;
+            ViewBag.Menu = 4;
             ViewBag.Title = "与组织匹配的用户信息";
-            return View();
+
+            OrganizationModel omodel = new OrganizationModel();
+            var Date = omodel.GetContrastInfo();
+
+            return View(Date);
         }
 
     }
