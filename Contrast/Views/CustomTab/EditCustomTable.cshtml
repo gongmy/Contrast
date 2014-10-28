@@ -1,0 +1,149 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@section head{
+    <script>
+        function OptintModel() {
+            var it = new Object;
+            it.ID = "0";
+            it.Option = "";
+            it.TypeVal = "0";
+            return it;
+        }
+        var items = [];
+
+        $(function () {
+
+            var ISOK = "@ViewBag.ISOK";
+
+            if (ISOK == 1) {
+                JMessage("修改成功", false);
+            }
+            else if (ISOK == 0) {
+                JMessage("修改失败", true);
+            }
+
+            //添加选项
+            $("#addOption").click(function () {
+
+                var DIVrow = '<div name="div_option"><input type="hidden" name="optionID" value="0" /><input name="option" type="text" style=" width:300px" /> <select name="typeval"> <option value="0">文本</option><option value="1">日期</option> </select>  <a class="delOption" style="cursor: pointer">删除</a></div>';
+
+                $("#div_Option_Main").append($(DIVrow));
+            });
+
+
+            //删除选项
+            $(".delOption").live("click", function () {
+
+                $(this).parent().remove();
+            });
+
+            //提交事件
+
+
+        });
+
+
+
+        function OnSub() {
+            var isOK = true;
+
+            var RowName = $("div[name='div_option']");
+            if (RowName.length <= 0) {
+                JMessage("请添加表字段", true);
+                return false;
+            }
+            items = [];
+            RowName.each(function (i, n) {
+                var optionID = $(n).find("input[name='optionID']").val();
+                var optionTitle = $(n).find("input[name='option']").val().trim();
+                var optionType = $(n).find("select[name='typeval']").val().trim();
+                if (optionTitle.length <= 0) {
+                    JMessage("请输入字段选项", true);
+                    isOK = false;
+                    return false;
+                }
+
+                var Om = new OptintModel();
+                Om.ID = optionID;
+                Om.Option = optionTitle;
+                Om.TypeVal = optionType;
+
+                items.push(Om);
+            });
+            var value = JSON.stringify(items);
+            $("#Options").val(value);
+
+            return isOK;
+        }
+    </script>
+    <style>
+        
+    </style>
+}
+@model Entity.CustomTable_Main
+<div class="Div_Title">
+    自定义表 -> 修改自定义表
+</div>
+<div>
+    @using (Ajax.BeginForm("EditCustomTable", "CustomTab", null, new AjaxOptions() { UpdateTargetId = "alert" }))
+    {
+        <div>
+            <input type="button" value="返回" onclick="window.location.href='@Url.Action("SetIndex", "CustomTab")'" class="input_button" />
+        </div>
+        <br />
+        <table class="Tab_info" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px">
+                    表名称：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.TableMain, new { style = "width:500px" })
+                    @Html.HiddenFor(a => a.ID)
+                    @Html.HiddenFor(a => a.SaveDate)
+                    <input type="hidden" id="Options" name="Options" />
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.TableMain)
+                </td>
+            </tr>
+            <tr id="tr_option" style="line-height: 30px">
+                <td valign="top">
+                    表字段：
+                </td>
+                <td colspan="2" class="Operation">
+                    <div id="div_Option_Main" class="operation">
+                        @foreach (var item in Model.CustomTable_Column)
+                        {
+                            <div name="div_option">
+                                <input type="hidden" name="optionID" value="@item.ID" />
+                                <input name="option" type="text" value="@item.ColumnName" style="width: 300px" />
+                                <select name="typeval">
+                                    @if (item.Enum_CustomTable_ColumnType == 0)
+                                    { 
+                                        <option value="0" selected="selected">文本</option>
+                                        <option value="1">日期</option>
+                                    }
+                                    else if (item.Enum_CustomTable_ColumnType == 1)
+                                    { 
+                                        <option value="0">文本</option>
+                                        <option value="1" selected="selected">日期</option>
+                                    }
+                                </select>
+                                <a class="delOption" style="cursor: pointer">删除</a>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        <a id="addOption" style="cursor: pointer">添加字段</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" id="sub_button" onclick="return OnSub()" class="input_button"
+                value="保存" />
+            <input type="button" value="返回" onclick="window.location.href='@Url.Action("SetIndex", "CustomTab")'" class="input_button" />
+        </div>
+    }
+</div>

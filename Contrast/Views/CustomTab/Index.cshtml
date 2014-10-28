@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@section head{
+    <script>
+    </script>
+    <style>
+        
+    </style>
+}
+@model List<Entity.CustomTable_Main>
+<div>
+    <table class="Tab_list" cellpadding="0" cellspacing="0">
+        <tr>
+            <th>
+                数据表
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="Operation">
+                    <a href="@Url.Action("CustomTableInfo", "CustomTab", new { CMID = item.ID })"  target="_blank">@item.TableMain</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

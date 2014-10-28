@@ -1,0 +1,163 @@
+﻿@{
+    Layout = "~/Views/Shared/_ShowOrAddLayout.cshtml";
+    var CustomTable = ViewBag.CustomTable as System.Data.DataTable;
+    var CustomColumn = ViewBag.CustomColumn as List<Entity.CustomTable_Column>;
+}
+@section head{
+    <script>
+        function OptintModel() {
+            var it = new Object;
+            it.Option = "";
+            return it;
+        }
+        var items = [];
+
+        $(function () {
+        });
+        //添加数据时生成json
+        function OnSub() {
+            var RowName = $("input[name='ColumnInfo']");
+            if (RowName.length <= 0) {
+                JMessage("没有数据", true);
+                return false;
+            }
+            items = [];
+            RowName.each(function (i, n) {
+
+                var optionVal = $(n).val().trim();
+                var Om = new OptintModel();
+                Om.Option = optionVal;
+                items.push(Om);
+            });
+            var value = JSON.stringify(items);
+            $("#Options").val(value);
+            return true;
+        }
+        //修改数据时生成json
+        function OnUpd(Control, Identification) {
+            
+            var RowName = $(Control).parent().parent().find("td[name='updTd']");
+            items = [];
+            RowName.each(function (i, n) {
+                var optionVal = $(n).find("input[name='UpdInfo']").val();
+
+                var Om = new OptintModel();
+                Om.Option = optionVal;
+                items.push(Om);
+            });
+
+            var value = JSON.stringify(items);
+            $("#UpdOptions").val(value);
+            $("#Identification").val(Identification);
+
+            $("#Upd_button").click();
+        }
+
+        function SaveShow(Control) {
+            $(Control).hide();
+            $(Control).parent().find("a[name='Del']").hide();
+            $(Control).parent().find("a[name='Save']").show();
+            $(Control).parent().find("a[name='Cancel']").show();
+
+            var RowName = $(Control).parent().parent();
+            RowName.each(function (i, n) {
+                $(n).find("input[name='UpdInfo']").show();
+                $(n).find("span[name='ShowSpan']").hide();
+            });
+        }
+
+        function SaveCancel(Control) {
+            $(Control).hide();
+            $(Control).parent().find("a[name='Save']").hide();
+            $(Control).parent().find("a[name='UPD']").show();
+            $(Control).parent().find("a[name='Del']").show();
+
+            var RowName = $(Control).parent().parent();
+            RowName.each(function (i, n) {
+                $(n).find("input[name='UpdInfo']").hide();
+                $(n).find("span[name='ShowSpan']").show();
+            });
+        }
+    </script>
+}
+@model Entity.CustomTable_Main
+<div>
+    @using (Ajax.BeginForm("AddCustomTableInfo", "CustomTab", new { CMID = Model.ID }, new AjaxOptions() { UpdateTargetId = "alert" }))
+    {
+        <table class="Tab_list" cellpadding="0" cellspacing="0">
+            <tr>
+                @for (int i = 1; i < CustomTable.Columns.Count; i++)
+                {
+                    <th>
+                        @CustomTable.Columns[i]
+                    </th>
+                }
+                @if (CustomTable.Columns.Count > 0)
+                {
+                    <th>
+                        操作
+                    </th>
+                }
+            </tr>
+            @for (int i = 0; i < CustomTable.Rows.Count; i++)
+            {
+                <tr>
+                    @for (int j = 1; j < CustomTable.Columns.Count; j++)
+                    {
+                        <td name="updTd">
+                            <span name="ShowSpan">@CustomTable.Rows[i][j]</span>
+                            <input name="UpdInfo" value="@CustomTable.Rows[i][j]" style=" display:none" id="U_@(i)_@j" />
+                            @if (CustomColumn[j-1].Enum_CustomTable_ColumnType == 1)
+                            {
+                                <script>
+                                    $("#U_@(i)_@j").datepicker({
+                                        changeMonth: true,
+                                        changeYear: true
+                                    });
+                                </script>
+                            }
+                        </td>
+                    }
+                    <td class="Operation">
+                        <a name="UPD" onclick="SaveShow(this)" style="cursor: pointer">修改</a> 
+                        <a name="Save" onclick = "OnUpd(this,'@CustomTable.Rows[i][0]')" style="display: none; cursor: pointer">保存</a> 
+                        <a name="Cancel" onclick="SaveCancel(this)"style="display: none; cursor: pointer">取消</a>
+                        @Ajax.ActionLink("删除", "DelCustomTableVal", "CustomTab", null, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要删除吗')) { window.location.href='" + Url.Action("DelCustomTableVal", "CustomTab", new { CMID = Model.ID, Identification = @CustomTable.Rows[i][0] }) + "'; }" }, new { name = "Del" })
+                    </td>
+                </tr>
+            }
+            <tr>
+                @for (int i = 1; i < CustomTable.Columns.Count; i++)
+                {
+                    <td>
+                        <input name="ColumnInfo" id="@i" />
+                        @if (CustomColumn[i - 1].Enum_CustomTable_ColumnType == 1)
+                        {
+                            <script>
+                                $("#@i").datepicker({
+                                    changeMonth: true,
+                                    changeYear: true
+                                });
+                            </script>
+                        }
+                    </td>
+                
+                }
+                @if (CustomTable.Columns.Count > 0)
+                {
+                    <td class="Operation">
+                        <input type="hidden" id="Options" name="Options" />
+                        <input type="submit" id="sub_button" onclick="return OnSub()" value="添加" class="input_button" />
+                    </td>
+                }
+            </tr>
+        </table>
+    }
+
+    @using (Ajax.BeginForm("EditCustomTableInfo", "CustomTab", new { CMID = Model.ID }, new AjaxOptions() { UpdateTargetId = "alert" }))
+    {
+         <input type="hidden" id="UpdOptions" name="UpdOptions" />
+         <input type="hidden" id="Identification" name="Identification" />
+         <input type="submit" id="Upd_button"  value="保存" class="input_button" style=" display:none" />
+    }
+</div>
