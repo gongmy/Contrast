@@ -20,10 +20,12 @@ namespace CustomTab1.Controllers
 
         public ActionResult UserContrast()
         {
-            ViewBag.Menu = 2;
-            Contrast_UserInfoModel model = new Contrast_UserInfoModel();
-            var list = model.UserContrast();
-            return View(list);
+            //ViewBag.Menu = 2;
+            //Contrast_UserInfoModel model = new Contrast_UserInfoModel();
+            //var list = model.UserContrast();
+            
+            //return View(list);
+            return View();
         }
     }
 }
