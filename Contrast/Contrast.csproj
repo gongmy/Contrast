@@ -596,6 +596,7 @@
     <Content Include="Views\Organization\OrgContrast.cshtml" />
     <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Views\Contrast_UserInfo\Index.cshtml" />
+<Content Include="Views\Contrast_UserInfo\UserContrast.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

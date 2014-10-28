@@ -8,9 +8,19 @@ namespace Business
 {
     public class Contrast_UserInfoModel : BaseModel<Contrast_UserInfo>
     {
-        public List<Contrast_UserInfo> UserContrast()
+        public List<User_Organization> UserContrast()
         {
-            return null;
+            OrganizationModel om = new OrganizationModel();
+            var oList = om.List();
+            var uList = List();
+            var query = from a in uList
+                        from b in oList
+                        where a.DemandMoney <= b.ProvideMoney &&
+                              a.DemandMonth >= b.BeginMonth && a.DemandMonth <= b.EndMonth &&
+                              a.AcceptInterest <= b.DemandInterest
+                        select new User_Organization { user = a, org = b };
+            return query.ToList();
         }
+
     }
 }
