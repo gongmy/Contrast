@@ -125,6 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Contrast_UserInfoController.cs" />
     <Compile Include="Controllers\CustomTabController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -591,6 +592,7 @@
     <Content Include="Views\CustomTab\EditCustomTable.cshtml" />
     <Content Include="Views\Shared\_ShowOrAddLayout.cshtml" />
     <Content Include="Views\CustomTab\CustomTableInfo.cshtml" />
+    <Content Include="Views\Contrast_UserInfo\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
