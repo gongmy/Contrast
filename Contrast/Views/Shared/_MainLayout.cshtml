@@ -247,21 +247,41 @@
                     <div style="float: left">
                         @if (ViewBag.Menu == 1)
                         {
-                            <a class="MeunA_Sel" href="@Url.Action("Index", "CustomTab")">数据展示与录入 </a>
+                            <a class="MeunA_Sel" href="@Url.Action("Index", "Contrast_UserInfo")">用户信息 </a>
                         }
                         else
                         { 
-                            <a class="MeunA" href="@Url.Action("Index", "CustomTab")">数据展示与录入 </a>
+                            <a class="MeunA" href="@Url.Action("Index", "Contrast_UserInfo")">用户信息 </a>
                         }
                     </div>
                     <div style="float: left">
                         @if (ViewBag.Menu == 2)
                         {
-                            <a class="MeunA_Sel" href="@Url.Action("SetIndex", "CustomTab")">自定义表</a>
+                            <a class="MeunA_Sel" href="@Url.Action("UserContrast", "Contrast_UserInfo")">与用户匹配的组织信息</a>
                         }
                         else
                         {
-                            <a class="MeunA" href="@Url.Action("SetIndex", "CustomTab")">自定义表</a>
+                            <a class="MeunA" href="@Url.Action("UserContrast", "Contrast_UserInfo")">与用户匹配的组织信息</a>
+                        }
+                    </div>
+                    <div style="float: left">
+                        @if (ViewBag.Menu == 3)
+                        {
+                            <a class="MeunA_Sel" href="@Url.Action("Index", "Organization")">组织机构信息 </a>
+                        }
+                        else
+                        { 
+                            <a class="MeunA" href="@Url.Action("Index", "Organization")">组织机构信息 </a>
+                        }
+                    </div>
+                    <div style="float: left">
+                        @if (ViewBag.Menu == 4)
+                        {
+                            <a class="MeunA_Sel" href="@Url.Action("OrgContrast", "Organization")">与组织匹配的用户信息</a>
+                        }
+                        else
+                        {
+                            <a class="MeunA" href="@Url.Action("OrgContrast", "Organization")">与组织匹配的用户信息</a>
                         }
                     </div>
                     @*<div style="float: left">
