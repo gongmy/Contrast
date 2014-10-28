@@ -42,4 +42,10 @@ namespace Entity
         /// </summary>
         public double AcceptInterest { get; set; }
     }
+
+    public class User_Organization
+    {
+        public Contrast_UserInfo user { get; set; }
+        public Contrast_Organization org { get; set; }
+    }
 }
