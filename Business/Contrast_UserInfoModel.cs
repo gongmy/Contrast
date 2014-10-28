@@ -15,7 +15,7 @@ namespace Business
                         from b in Context.Contrast_Organization
                         where a.DemandMoney <= b.ProvideMoney &&
                               a.DemandMonth >= b.BeginMonth && a.DemandMonth <= b.EndMonth &&
-                              a.AcceptInterest <= b.DemandInterest
+                              a.AcceptInterest >= b.DemandInterest
                         select new User_Organization { user = a, org = b };
             return query.ToList();
         }
