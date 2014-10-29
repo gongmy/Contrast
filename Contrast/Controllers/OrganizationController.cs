@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Business;
+using Entity;
 
 namespace CustomTab1.Controllers
 {
@@ -38,5 +39,21 @@ namespace CustomTab1.Controllers
             return View(Date);
         }
 
+
+        public ActionResult Add()
+        {
+            ViewBag.Menu = 3;
+            ViewBag.Title = "添加组织机构";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Contrast_Organization Corg)
+        {
+
+            OrganizationModel omodel = new OrganizationModel();
+            omodel.Add(Corg);
+            return JavaScript("window.location.href='" + Url.Action("Index", "Organization") + "'");
+        }
     }
 }

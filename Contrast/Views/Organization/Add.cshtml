@@ -1,0 +1,135 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@section head{
+}
+@model Entity.Contrast_Organization
+<div class="Div_Title">
+    组织机构 -> 添加组织机构
+</div>
+<div>
+    @using (Ajax.BeginForm("Add", "Organization", null, new AjaxOptions() { UpdateTargetId = "alert" }))
+    {
+        <div>
+            <input type="button" value="返回" onclick="window.location.href='@Url.Action("Index", "Organization")'" class="input_button" />
+        </div>
+        <br />
+        <table class="Tab_info" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px">
+                    姓名：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.Name, new { style = "width:500px" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Name)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    资质：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.Qualifications, new { style = "width:500px" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Qualifications)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    所在地：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.Location, new { style = "width:500px" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Location)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    信用评级：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.Credit, new { style = "width:500px" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Credit)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    法人：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.LegalPerson, new { style = "width:500px" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.LegalPerson)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    担保：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.Guarantee, new { style = "width:500px" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Guarantee)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    提供资金(万)：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.ProvideMoney, new { style = "width:100px" }) 万元
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.ProvideMoney)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    最小周期(月)：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.BeginMonth, new { style = "width:100px" }) 个月
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.BeginMonth)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    最大周期(月)：：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.EndMonth, new { style = "width:100px" }) 个月
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.EndMonth)
+                </td>
+            </tr>
+             <tr>
+                <td style="width: 120px">
+                    年利率：
+                </td>
+                <td>
+                    @Html.TextBoxFor(a => a.DemandInterest, new { style = "width:100px" }) %
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.DemandInterest)
+                </td>
+            </tr>
+        </table>
+    
+        <div>
+            <input type="submit" id="sub_button" class="input_button" value="添加" />
+            <input type="button" value="返回" onclick="window.location.href='@Url.Action("Index", "Organization")'" class="input_button" />
+        </div>
+    }
+</div>
