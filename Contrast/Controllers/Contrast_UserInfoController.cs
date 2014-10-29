@@ -23,6 +23,7 @@ namespace CustomTab1.Controllers
             ViewBag.Menu = 2;
             Contrast_UserInfoModel model = new Contrast_UserInfoModel();
             var list = model.UserContrast();
+
             return View(list);
         }
     }

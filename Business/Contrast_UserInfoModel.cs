@@ -11,13 +11,11 @@ namespace Business
         public List<User_Organization> UserContrast()
         {
             OrganizationModel om = new OrganizationModel();
-            var oList = om.List();
-            var uList = List();
-            var query = from a in uList
-                        from b in oList
+            var query = from a in Context.Contrast_UserInfo
+                        from b in Context.Contrast_Organization
                         where a.DemandMoney <= b.ProvideMoney &&
                               a.DemandMonth >= b.BeginMonth && a.DemandMonth <= b.EndMonth &&
-                              a.AcceptInterest <= b.DemandInterest
+                              a.AcceptInterest >= b.DemandInterest
                         select new User_Organization { user = a, org = b };
             return query.ToList();
         }
