@@ -598,6 +598,9 @@
     <Content Include="Views\Shared\_ShowOrAddLayout.cshtml" />
     <Content Include="Views\CustomTab\CustomTableInfo.cshtml" />
     <Content Include="Views\Organization\OrgContrast.cshtml" />
+    <Content Include="Views\Organization\Index.cshtml" />
+    <Content Include="Views\Organization\Add.cshtml" />
+    <Content Include="Views\Contrast_UserInfo\Add.cshtml" />
     <Content Include="Views\Contrast_UserInfo\Index.cshtml" />
     <Content Include="Views\Contrast_UserInfo\UserContrast.cshtml" />
     <Content Include="Views\Contrast_Workflow\Index.cshtml" />
