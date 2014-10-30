@@ -125,8 +125,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Contrast_UserInfoController.cs" />
+    <Compile Include="Controllers\Contrast_WorkflowController.cs" />
+    <Compile Include="Controllers\Contrast_WorkflowMainController.cs" />
     <Compile Include="Controllers\CustomTabController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -596,6 +600,9 @@
     <Content Include="Views\Organization\OrgContrast.cshtml" />
     <Content Include="Views\Contrast_UserInfo\Index.cshtml" />
     <Content Include="Views\Contrast_UserInfo\UserContrast.cshtml" />
+    <Content Include="Views\Contrast_Workflow\Index.cshtml" />
+    <Content Include="Views\Contrast_WorkflowMain\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

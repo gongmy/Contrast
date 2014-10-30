@@ -63,7 +63,10 @@
     <Compile Include="Commons\ExpandMethod.cs" />
     <Compile Include="Commons\QrCodes.cs" />
     <Compile Include="Commons\ToolImage.cs" />
+    <Compile Include="Contrast_AccountModel.cs" />
     <Compile Include="Contrast_UserInfoModel.cs" />
+    <Compile Include="Contrast_WorkflowMainModel.cs" />
+    <Compile Include="Contrast_WorkflowModel.cs" />
     <Compile Include="CustomTable_ColumnModel.cs" />
     <Compile Include="CustomTable_MainModel.cs" />
     <Compile Include="CustomTable_ValuesModel.cs" />

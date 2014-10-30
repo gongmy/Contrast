@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrast_Account.cs" />
     <Compile Include="Contrast_Organization.cs" />
     <Compile Include="Contrast_UserInfo.cs" />
+    <Compile Include="Contrast_Workflow.cs" />
+    <Compile Include="Contrast_WorkflowDetail.cs" />
+    <Compile Include="Contrast_WorkflowMain.cs" />
     <Compile Include="_Cutom_ColumnOption.cs" />
     <Compile Include="CustomTable_Column.cs">
       <SubType>Code</SubType>

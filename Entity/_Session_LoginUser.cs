@@ -9,5 +9,7 @@ namespace Entity
     public class SessionLoginUser
     {
         public int ID { get; set; }
+
+        public Contrast_Account Contrast_Account { get; set; }
     }
 }

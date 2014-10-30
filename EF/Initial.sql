@@ -20,3 +20,23 @@ INSERT INTO dbo.Contrast_Organization ( [ID], Name, Qualifications,Location,Cred
 INSERT INTO dbo.Contrast_Organization ( [ID], Name, Qualifications,Location,Credit,LegalPerson,Guarantee,ProvideMoney,BeginMonth,EndMonth, DemandInterest) VALUES  ( 3,'组织机构人三','资质三','西安','A','组织机构法人三','担保三',100,9,12,9)
 
 SET IDENTITY_INSERT [dbo].Contrast_Organization OFF
+
+
+/****** Object:  Table [dbo].[Contrast_Account]    Script Date: 10/29/2014 16:21:19 ******/
+SET IDENTITY_INSERT [dbo].[Contrast_Account] ON
+INSERT [dbo].[Contrast_Account] ([ID], [LoginName], [Password], [Name]) VALUES (1, N'admin1', N'password', N'admin1')
+INSERT [dbo].[Contrast_Account] ([ID], [LoginName], [Password], [Name]) VALUES (2, N'admin2', N'password', N'admin2')
+INSERT [dbo].[Contrast_Account] ([ID], [LoginName], [Password], [Name]) VALUES (3, N'admin3', N'password', N'admin3')
+INSERT [dbo].[Contrast_Account] ([ID], [LoginName], [Password], [Name]) VALUES (4, N'admin4', N'password', N'admin4')
+INSERT [dbo].[Contrast_Account] ([ID], [LoginName], [Password], [Name]) VALUES (5, N'admin5', N'password', N'admin5')
+SET IDENTITY_INSERT [dbo].[Contrast_Account] OFF
+/****** Object:  Table [dbo].[Contrast_Workflow]    Script Date: 10/29/2014 16:21:19 ******/
+SET IDENTITY_INSERT [dbo].[Contrast_Workflow] ON
+INSERT [dbo].[Contrast_Workflow] ([ID], [Title], [Sort], [Contrast_AccountID], [IsSelfCheck]) VALUES (2, N'项目立项', 1, 1, 0)
+INSERT [dbo].[Contrast_Workflow] ([ID], [Title], [Sort], [Contrast_AccountID], [IsSelfCheck]) VALUES (3, N'初步调查', 2, 2, 0)
+INSERT [dbo].[Contrast_Workflow] ([ID], [Title], [Sort], [Contrast_AccountID], [IsSelfCheck]) VALUES (4, N'机构初步对接', 3, 3, 0)
+INSERT [dbo].[Contrast_Workflow] ([ID], [Title], [Sort], [Contrast_AccountID], [IsSelfCheck]) VALUES (5, N'签署协议', 4, NULL, 1)
+INSERT [dbo].[Contrast_Workflow] ([ID], [Title], [Sort], [Contrast_AccountID], [IsSelfCheck]) VALUES (6, N'机构对接', 5, 4, 0)
+INSERT [dbo].[Contrast_Workflow] ([ID], [Title], [Sort], [Contrast_AccountID], [IsSelfCheck]) VALUES (7, N'落实放贷费用收取', 6, 5, 0)
+INSERT [dbo].[Contrast_Workflow] ([ID], [Title], [Sort], [Contrast_AccountID], [IsSelfCheck]) VALUES (8, N'投后管理', 7, NULL, 1)
+SET IDENTITY_INSERT [dbo].[Contrast_Workflow] OFF

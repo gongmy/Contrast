@@ -41,6 +41,8 @@ namespace Entity
         /// 可承受年利息
         /// </summary>
         public double AcceptInterest { get; set; }
+
+        public virtual ICollection<Contrast_WorkflowMain> Contrast_WorkflowMains { get; set; }
     }
 
     public class User_Organization

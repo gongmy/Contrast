@@ -52,6 +52,6 @@ namespace Entity
         /// </summary>
         public double DemandInterest { get; set; }
 
-
+        public virtual ICollection<Contrast_WorkflowMain> Contrast_WorkflowMains { get; set; }
     }
 }

@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .ac
+        {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 600px; margin: 130px auto 0px auto; text-align: center">
+        <div>
+            选择登录人</div>
+        <div class="ac">@Html.ActionLink("admin1", "login", new { id = 1, url = ViewBag.Url })</div>
+        <div class="ac">@Html.ActionLink("admin2", "login", new { id = 2, url = ViewBag.Url })</div>
+        <div class="ac">@Html.ActionLink("admin3", "login", new { id = 3, url = ViewBag.Url })</div>
+        <div class="ac">@Html.ActionLink("admin4", "login", new { id = 4, url = ViewBag.Url })</div>
+        <div class="ac">@Html.ActionLink("admin5", "login", new { id = 5, url = ViewBag.Url })</div>
+    </div>
+</body>
+</html>

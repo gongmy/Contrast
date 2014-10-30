@@ -7,7 +7,7 @@ using Business;
 
 namespace CustomTab1.Controllers
 {
-    public class Contrast_UserInfoController : Controller
+    public class Contrast_UserInfoController : BaseController
     {
         public ActionResult Index()
         {

@@ -7,7 +7,7 @@ using Business;
 
 namespace CustomTab1.Controllers
 {
-    public class OrganizationController : Controller
+    public class OrganizationController : BaseController
     {
         //
         // GET: /Organization/
