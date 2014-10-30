@@ -39,7 +39,7 @@ namespace Entity
         public DateTime? CheckTime { get; set; }
 
         /// <summary>
-        /// 1：通过    0：未通过
+        /// 1：通过    0：未通过  
         /// </summary>
         public int Status { get; set; }
 
