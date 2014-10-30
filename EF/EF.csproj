@@ -47,13 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201410280800171_add.cs" />
-    <Compile Include="Migrations\201410280800171_add.Designer.cs">
-      <DependentUpon>201410280800171_add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410290816408_Update.cs" />
-    <Compile Include="Migrations\201410290816408_Update.Designer.cs">
-      <DependentUpon>201410290816408_Update.cs</DependentUpon>
+    <Compile Include="Migrations\201410300646445_Update.cs" />
+    <Compile Include="Migrations\201410300646445_Update.Designer.cs">
+      <DependentUpon>201410300646445_Update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,11 +68,8 @@
     <Content Include="Initial.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410280800171_add.resx">
-      <DependentUpon>201410280800171_add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410290816408_Update.resx">
-      <DependentUpon>201410290816408_Update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201410300646445_Update.resx">
+      <DependentUpon>201410300646445_Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,14 +29,14 @@ namespace Entity
         /// <summary>
         /// 审批人
         /// </summary>
-        public int Contrast_AccountID { get; set; }
+        public int? Contrast_AccountID { get; set; }
 
         public virtual Contrast_Account Contrast_Account { get; set; }
 
         /// <summary>
         /// 审批时间
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        public DateTime? CheckTime { get; set; }
 
         /// <summary>
         /// 1：通过    0：未通过

@@ -33,6 +33,7 @@ namespace CustomTab1.Controllers
             if (request != null && request.CurrentExecutionFilePath!=null)
             {
                 url = request.CurrentExecutionFilePath;
+                ViewBag.BackUrl = url;
             }
             if (LoginAccount == null)
             {
