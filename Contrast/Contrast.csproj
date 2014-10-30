@@ -606,6 +606,9 @@
     <Content Include="Views\Contrast_Workflow\Index.cshtml" />
     <Content Include="Views\Contrast_WorkflowMain\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Contrast_WorkflowMain\MyWorkFlow.cshtml" />
+    <Content Include="Views\Contrast_WorkflowMain\AgencyMatter.cshtml" />
+    <Content Include="Views\Contrast_WorkflowMain\HaveToDoMatter.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
