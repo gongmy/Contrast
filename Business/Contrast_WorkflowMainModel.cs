@@ -25,13 +25,14 @@ namespace Business
             contrast_WorkflowMain.State = 0;
 
             Contrast_WorkflowModel WorkflowModel = new Contrast_WorkflowModel();
-            var workflow = WorkflowModel.List().OrderBy(a => a.Sort).FirstOrDefault();
+            var workflowList = WorkflowModel.List().OrderBy(a => a.Sort).ToList();
             Contrast_WorkflowDetail detail = new Contrast_WorkflowDetail();
-            detail.Contrast_WorkflowID = workflow.ID;
+            detail.Contrast_WorkflowID = workflowList[0].ID;
             detail.Contrast_AccountID = contrast_WorkflowMain.Contrast_AccountID;
             detail.CheckTime = dateTime;
             detail.Status = 1;
             detail.Comment = comment;
+            detail.Contrast_WorkflowID = workflowList[1].ID;
             List<Contrast_WorkflowDetail> list = new List<Contrast_WorkflowDetail>();
             list.Add(detail);
             contrast_WorkflowMain.Contrast_WorkflowDetails = list;
