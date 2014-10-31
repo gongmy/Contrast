@@ -25,7 +25,7 @@ namespace Entity
         /// </summary>
         [Display(Name = "创建日期")]
         public DateTime SaveDate { get; set; }
-
+        
         //----------------------子表------------------------------------------
         /// <summary>
         /// 自定义列标题表

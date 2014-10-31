@@ -32,5 +32,7 @@ namespace Entity
         public bool IsSelfCheck { get; set; }
 
         public virtual ICollection<Contrast_WorkflowDetail> Contrast_WorkflowDetails { get; set; }
+
+        public virtual ICollection<Contrast_WorkflowMain> Contrast_WorkflowMains { get; set; }
     }
 }

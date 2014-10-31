@@ -38,6 +38,11 @@ namespace Entity
         public virtual Contrast_UserInfo Contrast_UserInfo { get; set; }
 
         public virtual ICollection<Contrast_WorkflowDetail> Contrast_WorkflowDetails { get; set; }
+
+        //当前节点
+        public int? Contrast_WorkflowID { get; set; }
+
+        public virtual Contrast_Workflow Contrast_Workflow { get; set; }
     }
 
     public class Contrast_WorkflowMainDetail

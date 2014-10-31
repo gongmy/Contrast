@@ -86,77 +86,59 @@
         
         <div class="content">
             <article>
-        <h3>2012</h3>
-        @foreach (var item in list)
-        {
-            <section>
-            <span class="point-time point-green"></span>
-            <time datetime="2013-03">
-                <span>@item.CheckTime</span>
-            </time>
-            <aside>
-                <p class="things">@item.Title</p>
-                <p class="brief"><span class="text-green">@(item.Status==1?"通过":"未通过")</span></p>
-            </aside>
-        </section>
-        }
+                @{
+                bool isStop = false;
         
-        <section>
-            <span class="point-time point-green"></span>
-            <time datetime="2012-11">
-                <span>November</span>
-                <span>2012</span>
-            </time>
-            <aside>
-                <p class="things">Visitor at Daily web 2012</p>
-                <p class="brief"><span class="text-green">Conference</span></p>
-            </aside>
-        </section>
-        <section>
-            <span class="point-time point-red"></span>
-            <time datetime="2012-09">
-                <span>September</span>
-                <span>2012</span>
-            </time>
-            <aside>
-                <p class="things">You reached 500 followers on Dribbble</p>
-                <p class="brief"><span class="text-red">Social Appearance</span></p>
-            </aside>
-        </section>
-        <section>
-            <span class="point-time point-blue"></span>
-            <time datetime="2012-08">
-                <span>August</span>
-                <span>2012</span>
-            </time>
-            <aside>
-                <p class="things">New job position as Senior Designer at Fantasy Interactive</p>
-                <p class="brief"><span class="text-blue">Working Experience</span></p>
-            </aside>
-        </section>
-        <section>
-            <span class="point-time point-red"></span>
-            <time datetime="2012-03">
-                <span>March</span>
-                <span>2012</span>
-            </time>
-            <aside>
-                <p class="things">Speaker at ASMO conference</p>
-                <p class="brief"><span class="text-red">Conference</span></p>
-            </aside>
-        </section>
-        <section>
-            <span class="point-time point-blue"></span>
-            <time datetime="2012-02">
-                <span>February</span>
-                <span>2012</span>
-            </time>
-            <aside>
-                <p class="things">You added new skills to job position Junior Designer at Fantasy Interactive</p>
-                <p class="brief"><span class="text-blue">Working Experience</span></p>
-            </aside>
-        </section>
-    </article>
+                    }
+                @foreach (var item in list)
+                {
+                    string color = null;
+                    string status_str = "";
+                    if (item.Status.HasValue)
+                    {
+                        if (item.Status.Value == 1)
+                        {
+                            //通过
+                            color = "green";
+                            status_str = "通过";
+                        }
+                        else
+                        {
+                            //未通过
+                            color = "red";
+                            status_str = "未通过";
+                        }
+                    }
+                    else
+                    {
+                        if (isStop == false)
+                        {   //审核中
+                            color = "yellow";
+                            status_str = "审核中";
+                        }
+                        else
+                        {
+                            //未进行
+                            color = "blue";
+                            status_str = "未审核";
+                        }
+                    }
+                    <section>
+                        <span class="point-time point-@color"></span>
+                        <time datetime="2013-03">
+                            <span>@item.CheckTime</span>
+                        </time>
+                        <aside>
+                            <p class="things">@item.Title</p>
+                            <p class="brief"><span class="text-@color" style="width:45px">@status_str</span><span class="text-black" style="margin-left:10px;color:Black">项目立项</span></p>
+                        </aside>
+                    </section>
+                    if (item.Status.HasValue == false)
+                    {
+                        isStop = true;
+                    }
+                }
+            </article>
         </div>
 
         <div>
