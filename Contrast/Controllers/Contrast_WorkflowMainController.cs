@@ -38,11 +38,27 @@ namespace CustomTab1.Controllers
             var result = model.Add(contrast_WorkflowMain, comment);
             if (result.HasError)
             {
-                return JavaScript("JMessage('"+result.Error.Replace('\'','"')+"',true)");
+                return JavaScript("JMessage('" + result.Error.Replace('\'', '"') + "',true)");
             }
             return JavaScript("window.location.href='" + Url.Action("MyWorkFlow", "Contrast_WorkflowMain") + "'");
         }
-		
+
+        public ActionResult Detail(int id)
+        {
+            Contrast_WorkflowMainModel model = new Contrast_WorkflowMainModel();
+            var workflowMain = model.Get(id);
+            var isOk = workflowMain.Contrast_WorkflowDetails.Any(a => a.Contrast_AccountID == LoginAccount.Contrast_Account.ID);
+            if (!isOk)
+            {
+                throw new ApplicationException("未找到数据。");
+            }
+            //获取全部过程
+            Contrast_WorkflowDetailModel detailModel=new Contrast_WorkflowDetailModel();
+            var list= detailModel.GetAll(id);
+            ViewBag.List=list;
+            return View(workflowMain);
+        }
+
         /// <summary>
         /// 我的申请
         /// </summary>
@@ -83,9 +99,8 @@ namespace CustomTab1.Controllers
         /// 获取当前处理人
         /// </summary>
         /// <returns></returns>
-        public string  GetApproval(int MainID)
+        public string GetApproval(int MainID)
         {
-
             return "";
         }
     }

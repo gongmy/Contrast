@@ -65,6 +65,7 @@
     <Compile Include="Commons\ToolImage.cs" />
     <Compile Include="Contrast_AccountModel.cs" />
     <Compile Include="Contrast_UserInfoModel.cs" />
+    <Compile Include="Contrast_WorkflowDetailModel.cs" />
     <Compile Include="Contrast_WorkflowMainModel.cs" />
     <Compile Include="Contrast_WorkflowModel.cs" />
     <Compile Include="CustomTable_ColumnModel.cs" />

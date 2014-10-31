@@ -20,6 +20,7 @@ namespace EF
         public DbSet<Contrast_Workflow> Contrast_Workflow { get; set; }
         public DbSet<Contrast_WorkflowMain> Contrast_WorkflowMain { get; set; }
         public DbSet<Contrast_WorkflowDetail> Contrast_WorkflowDetail { get; set; }
+        public DbSet<Contrast_WorkflowMainDetail> Contrast_WorkflowMainDetail { get; set; }
 
         //数据库生成的其他设置
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -28,6 +29,7 @@ namespace EF
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Ignore<User_Organization>();
             modelBuilder.Ignore<SessionLoginUser>();
+            modelBuilder.Ignore<Contrast_WorkflowMainDetail>();
         }
     }
 }

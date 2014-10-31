@@ -39,4 +39,23 @@ namespace Entity
 
         public virtual ICollection<Contrast_WorkflowDetail> Contrast_WorkflowDetails { get; set; }
     }
+
+    public class Contrast_WorkflowMainDetail
+    {
+        public int? ID { get; set; }
+
+        public int wid { get; set; }
+
+        public string Title { get; set; }
+
+        public int? Contrast_AccountID { get; set; }
+
+        public bool IsSelfCheck { get; set; }
+
+        public DateTime? CheckTime { get; set; }
+
+        public string Comment { get; set; }
+
+        public int? Status { get; set; }
+    }
 }
