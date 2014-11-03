@@ -8,6 +8,7 @@
         
     </style>
 }
+@model List<Entity.Contrast_WorkflowDetail>
 <div>
     <table class="Tab_list" cellpadding="0" cellspacing="0">
         <tr>
@@ -33,6 +34,47 @@
                 审批状态
             </th>
         </tr>
+         @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                <a href="@Url.Action("Contrast_WorkflowMain", "Detail", new { ID = item.Contrast_WorkflowMain.ID })">@item.Contrast_WorkflowMain.ID</a>
+                </td>
+                <td>
+                    @item.Contrast_WorkflowMain.CreateTime
+                </td>
+                <td>
+                    @item.Contrast_WorkflowMain.Contrast_Account.Name
+                </td>
+                <td>@item.CheckTime</td>
+                <td>
+                    @if (item.Contrast_WorkflowMain.State == 0)
+                    { 
+                        @item.Contrast_Workflow.Title
+                    }
+                </td>
+                <td>
+                    @if (item.Contrast_WorkflowMain.State == 0)
+                    { 
+                        @item.Contrast_Workflow.Contrast_Account.Name
+                    }
+                </td>
+                <td>
+                    @switch (item.Contrast_WorkflowMain.State)
+                    {
+                        case 1:
+                        @:审批完成
+                            break;
+                        case 2:
+                        @:审批未通过
+                            break;
+                        case 0:
+                        @:进行中
+                            break;
+                    }
+                </td>
+            </tr>            
+        }
     </table>
 </div>
 

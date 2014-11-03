@@ -47,10 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201410310524228_Update.cs" />
-    <Compile Include="Migrations\201410310524228_Update.Designer.cs">
-      <DependentUpon>201410310524228_Update.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,11 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Initial.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410310524228_Update.resx">
-      <DependentUpon>201410310524228_Update.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -100,7 +100,10 @@ namespace CustomTab1.Controllers
         {
             ViewBag.Menu = 6;
             ViewBag.Title = "代办事项";
-            return View();
+
+            Contrast_WorkflowMainModel C_MainModel = new Contrast_WorkflowMainModel();
+            var list = C_MainModel.GetAgencyList_BYAccountID(LoginAccount.ID);
+            return View(list);
         }
 
         /// <summary>
@@ -111,7 +114,9 @@ namespace CustomTab1.Controllers
         {
             ViewBag.Menu = 6;
             ViewBag.Title = "已办事项";
-            return View();
+            Contrast_WorkflowDetailModel detailModel = new Contrast_WorkflowDetailModel();
+            var list = detailModel.GetHavetodoMain(LoginAccount.ID);
+            return View(list);
         }
 
         /// <summary>

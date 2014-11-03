@@ -18,6 +18,20 @@ namespace Business
             var list = List().Where(a => a.Contrast_AccountID == AID).OrderByDescending(a => a.CreateTime).ToList();
             return list;
         }
+
+        /// <summary>
+        /// 查询代办事项
+        /// </summary>
+        /// <param name="AID">用户ID</param>
+        /// <returns></returns>
+        public List<Contrast_WorkflowMain> GetAgencyList_BYAccountID(int AID)
+        {
+            var list = List().Where(a => a.Contrast_Workflow.Contrast_AccountID == AID).OrderByDescending(a => a.CreateTime).ToList();
+            return list;
+        }
+
+
+
         public Result Add(Contrast_WorkflowMain contrast_WorkflowMain, string comment)
         {
             var dateTime = DateTime.Now;
