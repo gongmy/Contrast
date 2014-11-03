@@ -34,16 +34,22 @@
         {
             <tr>
                 <td>
-                    @item.ID
+                   <a href="@Url.Action("Contrast_WorkflowMain", "Detail", new { ID = item.ID })">@item.ID</a>
                 </td>
                 <td>
                     @item.CreateTime
                 </td>
                 <td>
-                    
+                    @if (item.State == 0)
+                    { 
+                        @item.Contrast_Workflow.Title
+                    }
                 </td>
                 <td>
-                    
+                    @if (item.State == 0)
+                    { 
+                        @item.Contrast_Workflow.Contrast_Account.Name
+                    }
                 </td>
                 <td>
                     @switch (item.State)

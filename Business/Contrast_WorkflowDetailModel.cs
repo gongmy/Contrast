@@ -38,5 +38,16 @@ namespace Business
             var list= common.SqlQuery<Contrast_WorkflowMainDetail>(sql).ToList();
             return list;
         }
+
+        /// <summary>
+        /// 获取已办流程
+        /// </summary>
+        /// <param name="AccountID"></param>
+        /// <returns></returns>
+        public List<Contrast_WorkflowDetail> GetHavetodoMain(int AccountID)
+        {
+            var list = List().Where(a=>a.Contrast_AccountID == AccountID).ToList();
+            return list;
+        }
     }
 }
