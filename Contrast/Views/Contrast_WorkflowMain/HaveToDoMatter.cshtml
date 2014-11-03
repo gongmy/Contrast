@@ -10,6 +10,10 @@
 }
 @model List<Entity.Contrast_WorkflowDetail>
 <div>
+            <input type="button" value="返回" onclick="window.location.href='@Url.Action("ApprovalManager", "Contrast_WorkflowMain")'" class="input_button" />
+        </div>
+        <br />
+<div>
     <table class="Tab_list" cellpadding="0" cellspacing="0">
         <tr>
             <th>
@@ -38,7 +42,7 @@
         {
             <tr>
                 <td>
-                <a href="@Url.Action("Contrast_WorkflowMain", "Detail", new { ID = item.Contrast_WorkflowMain.ID })">@item.Contrast_WorkflowMain.ID</a>
+                <a href="@Url.Action("Detail", "Contrast_WorkflowMain", new { ID = item.Contrast_WorkflowMain.ID })">@item.Contrast_WorkflowMain.ID</a>
                 </td>
                 <td>
                     @item.Contrast_WorkflowMain.CreateTime

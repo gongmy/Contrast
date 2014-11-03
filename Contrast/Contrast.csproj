@@ -612,6 +612,7 @@
     <Content Include="Views\Contrast_WorkflowMain\AgencyMatter.cshtml" />
     <Content Include="Views\Contrast_WorkflowMain\HaveToDoMatter.cshtml" />
     <Content Include="Views\Contrast_WorkflowMain\Detail.cshtml" />
+    <Content Include="Views\Contrast_WorkflowMain\ApprovalManager.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

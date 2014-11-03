@@ -74,13 +74,13 @@ namespace CustomTab1.Controllers
         }
 
         /// <summary>
-        /// 代办事项
+        /// 待办事项
         /// </summary>
         /// <returns></returns>
         public ActionResult AgencyMatter()
         {
             ViewBag.Menu = 6;
-            ViewBag.Title = "代办事项";
+            ViewBag.Title = "待办事项";
 
             Contrast_WorkflowMainModel C_MainModel = new Contrast_WorkflowMainModel();
             var list = C_MainModel.GetAgencyList_BYAccountID(LoginAccount.ID);
@@ -101,12 +101,15 @@ namespace CustomTab1.Controllers
         }
 
         /// <summary>
-        /// 获取当前处理人
+        /// 审批管理
         /// </summary>
         /// <returns></returns>
-        public string GetApproval(int MainID)
+        public ActionResult ApprovalManager()
         {
-            return "";
+
+            ViewBag.Menu = 6;
+            ViewBag.Title = "审批管理";
+            return View();
         }
     }
 }
