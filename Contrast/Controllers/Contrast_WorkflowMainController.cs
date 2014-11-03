@@ -48,15 +48,34 @@ namespace CustomTab1.Controllers
             Contrast_WorkflowMainModel model = new Contrast_WorkflowMainModel();
             var workflowMain = model.Get(id);
             var isOk = workflowMain.Contrast_WorkflowDetails.Any(a => a.Contrast_AccountID == LoginAccount.Contrast_Account.ID);
-            if (!isOk)
+
+            //根据当前账号获取可操作的权限
+            var isOK2 = workflowMain.Contrast_Workflow.Contrast_AccountID == LoginAccount.Contrast_Account.ID;
+
+
+            if (!(isOk || isOK2))
             {
                 throw new ApplicationException("未找到数据。");
             }
             //获取全部过程
-            Contrast_WorkflowDetailModel detailModel=new Contrast_WorkflowDetailModel();
-            var list= detailModel.GetAll(id);
-            ViewBag.List=list;
+            Contrast_WorkflowDetailModel detailModel = new Contrast_WorkflowDetailModel();
+            var list = detailModel.GetAll(id);
+            ViewBag.List = list;
+            isOK2 = isOK2 && (workflowMain.State == 0);
+            ViewBag.ShowOperation = isOK2;
             return View(workflowMain);
+        }
+
+        [HttpPost]
+        public ActionResult Detail(Contrast_WorkflowMain wm, int hidStatus, string comment)
+        {
+            Contrast_WorkflowMainModel model = new Contrast_WorkflowMainModel();
+            var result = model.Check(wm, LoginAccount.Contrast_Account.ID, hidStatus, comment);
+            if (result.HasError)
+            {
+                return JavaScript("JMessage('" + result.Error.Replace('\'', '"') + "',true)");
+            }
+            return JavaScript("window.location.href='" + Url.Action("Detail", "Contrast_WorkflowMain", new { id = wm.ID }) + "'");
         }
 
         /// <summary>
