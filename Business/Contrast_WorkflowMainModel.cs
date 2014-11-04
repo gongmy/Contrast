@@ -34,19 +34,20 @@ namespace Business
 
         public Result Add(Contrast_WorkflowMain contrast_WorkflowMain, string comment)
         {
+            Contrast_WorkflowModel WorkflowModel = new Contrast_WorkflowModel();
+            var workflowList = WorkflowModel.List().OrderBy(a => a.Sort).ToList();
+
             var dateTime = DateTime.Now;
             contrast_WorkflowMain.CreateTime = dateTime;
             contrast_WorkflowMain.State = 0;
+            contrast_WorkflowMain.Contrast_WorkflowID = workflowList[1].ID;
 
-            Contrast_WorkflowModel WorkflowModel = new Contrast_WorkflowModel();
-            var workflowList = WorkflowModel.List().OrderBy(a => a.Sort).ToList();
             Contrast_WorkflowDetail detail = new Contrast_WorkflowDetail();
             detail.Contrast_WorkflowID = workflowList[0].ID;
             detail.Contrast_AccountID = contrast_WorkflowMain.Contrast_AccountID;
             detail.CheckTime = dateTime;
             detail.Status = 1;
             detail.Comment = comment;
-            detail.Contrast_WorkflowID = workflowList[1].ID;
             List<Contrast_WorkflowDetail> list = new List<Contrast_WorkflowDetail>();
             list.Add(detail);
             contrast_WorkflowMain.Contrast_WorkflowDetails = list;
@@ -85,10 +86,12 @@ namespace Business
                     if (status == 0)
                     {
                         contrast_WorkflowMain.Contrast_WorkflowID = null;
+                        contrast_WorkflowMain.State =2;
                     }
                     else
                     {
                         contrast_WorkflowMain.Contrast_WorkflowID = nextWorkflow.ID;
+                        contrast_WorkflowMain.State = 0;
                     }
                 }
                 else
@@ -96,7 +99,7 @@ namespace Business
                     contrast_WorkflowMain.Contrast_WorkflowID = null;
                     if (status == 1)
                     {
-                        contrast_WorkflowMain.State = 1;
+                        contrast_WorkflowMain.State = 2;
                     }
                     else
                     {
@@ -104,7 +107,7 @@ namespace Business
                     }
                 }
                 contrast_WorkflowMain.Contrast_AccountID = raw.Contrast_AccountID;
-                contrast_WorkflowMain.CreateTime = contrast_WorkflowMain.CreateTime;
+                contrast_WorkflowMain.CreateTime = raw.CreateTime;
                 contrast_WorkflowMain.Contrast_OrganizationID = raw.Contrast_OrganizationID;
                 contrast_WorkflowMain.Contrast_UserInfoID = raw.Contrast_UserInfoID;
                 result = Edit(contrast_WorkflowMain);

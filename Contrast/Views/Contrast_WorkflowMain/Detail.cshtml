@@ -6,9 +6,9 @@
 @section head{
     <link href="@Url.Content("/Content/timeline.css")" rel="stylesheet" type="text/css" />
     <script>
-        function submit(status) {
+        function btn_submit(status) {
             $("#hidStatus").val(status);
-            $("#sub_button").click();
+            $("form").submit();
         }
     </script>
 }
@@ -154,8 +154,8 @@
         <div>
             @if (ViewBag.ShowOperation)
             { 
-                <input type="button" class="input_button" value="通过" onclick="submit(1)" />
-                <input type="button" class="input_button" value="不通过" onclick="submit(0)" />
+                <input type="button" class="input_button" value="通过" onclick="btn_submit(1)" />
+                <input type="button" class="input_button" value="不通过" onclick="btn_submit(0)" />
                 <input type="submit" style="display: none" id="sub_button" />
             }
             <input type="button" value="返回" onclick="window.location.href='@ViewBag.BackUrl" class="input_button" />

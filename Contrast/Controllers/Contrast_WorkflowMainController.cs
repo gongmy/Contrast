@@ -50,10 +50,13 @@ namespace CustomTab1.Controllers
             var isOk = workflowMain.Contrast_WorkflowDetails.Any(a => a.Contrast_AccountID == LoginAccount.Contrast_Account.ID);
 
             //根据当前账号获取可操作的权限
-            var isOK2 = workflowMain.Contrast_Workflow.Contrast_AccountID == LoginAccount.Contrast_Account.ID;
+            bool isOk2 = false;
+            if (workflowMain.Contrast_Workflow != null)
+            {
+                isOk2=workflowMain.Contrast_Workflow.Contrast_AccountID == LoginAccount.Contrast_Account.ID;
+            }
 
-
-            if (!(isOk || isOK2))
+            if (!(isOk || isOk2))
             {
                 throw new ApplicationException("未找到数据。");
             }
@@ -61,8 +64,8 @@ namespace CustomTab1.Controllers
             Contrast_WorkflowDetailModel detailModel = new Contrast_WorkflowDetailModel();
             var list = detailModel.GetAll(id);
             ViewBag.List = list;
-            isOK2 = isOK2 && (workflowMain.State == 0);
-            ViewBag.ShowOperation = isOK2;
+            isOk2 = isOk2 && (workflowMain.State == 0);
+            ViewBag.ShowOperation = isOk2;
             return View(workflowMain);
         }
 
@@ -88,7 +91,7 @@ namespace CustomTab1.Controllers
             ViewBag.Title = "我的申请";
 
             Contrast_WorkflowMainModel C_MainModel = new Contrast_WorkflowMainModel();
-            var list = C_MainModel.GetList_BYAccountID(LoginAccount.ID);
+            var list = C_MainModel.GetList_BYAccountID(LoginAccount.Contrast_Account.ID);
             return View(list);
         }
 
