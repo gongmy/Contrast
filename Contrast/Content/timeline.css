@@ -5,13 +5,6 @@
 
 article,section,time,aside{display:block;}
 
-body {
-  color: #9f9f9f;
-  background: #fff;
-  font-size: 14px;
-  font-family: 'Lato', Calibri, Arial, sans-serif;
-}
-
 .point-time {
   content: "";
   position: absolute;
@@ -66,8 +59,8 @@ body {
 }
 
 .content {
-  width: 970px;
-  margin: 30px auto;
+  margin: 10px auto;
+  font-size: 14px;
 }
 .content article {
   position: relative;
@@ -111,8 +104,8 @@ body {
 .content article section aside {
   color: #3a3a38;
   margin-left: 25%;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 .content article section .brief {
   /*color: #9f9f9f;*/

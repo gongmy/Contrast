@@ -39,7 +39,9 @@ namespace Entity
 
         public virtual ICollection<Contrast_WorkflowDetail> Contrast_WorkflowDetails { get; set; }
 
-        //当前节点
+        /// <summary>
+        /// 当前节点
+        /// </summary>
         public int? Contrast_WorkflowID { get; set; }
 
         public virtual Contrast_Workflow Contrast_Workflow { get; set; }
@@ -53,7 +55,25 @@ namespace Entity
 
         public string Title { get; set; }
 
-        public int? Contrast_AccountID { get; set; }
+        /// <summary>
+        /// 分配审批人ID
+        /// </summary>
+        public int? Contrast_AccountID1 { get; set; }
+
+        /// <summary>
+        /// 审批人名称
+        /// </summary>
+        public string Contrast_AccountName1 { get; set; }
+
+        /// <summary>
+        /// 真实操作的审批人ID
+        /// </summary>
+        public int? Contrast_AccountID2 { get; set; }
+
+        /// <summary>
+        /// 真实操作的审批人名称
+        /// </summary>
+        public string Contrast_AccountName2 { get; set; }
 
         public bool IsSelfCheck { get; set; }
 
