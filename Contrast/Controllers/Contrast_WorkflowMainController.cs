@@ -53,7 +53,14 @@ namespace CustomTab1.Controllers
             bool isOk2 = false;
             if (workflowMain.Contrast_Workflow != null)
             {
-                isOk2=workflowMain.Contrast_Workflow.Contrast_AccountID == LoginAccount.Contrast_Account.ID;
+                if (workflowMain.Contrast_Workflow.Contrast_AccountID.HasValue)
+                {
+                    isOk2 = workflowMain.Contrast_Workflow.Contrast_AccountID == LoginAccount.Contrast_Account.ID;
+                }
+                else
+                {
+                    isOk2 = workflowMain.Contrast_AccountID == LoginAccount.Contrast_Account.ID;
+                }
             }
 
             if (!(isOk || isOk2))
@@ -105,7 +112,7 @@ namespace CustomTab1.Controllers
             ViewBag.Title = "待办事项";
 
             Contrast_WorkflowMainModel C_MainModel = new Contrast_WorkflowMainModel();
-            var list = C_MainModel.GetAgencyList_BYAccountID(LoginAccount.ID);
+            var list = C_MainModel.GetAgencyList_BYAccountID(LoginAccount.Contrast_Account.ID);
             return View(list);
         }
 
@@ -118,7 +125,7 @@ namespace CustomTab1.Controllers
             ViewBag.Menu = 6;
             ViewBag.Title = "已办事项";
             Contrast_WorkflowDetailModel detailModel = new Contrast_WorkflowDetailModel();
-            var list = detailModel.GetHavetodoMain(LoginAccount.ID);
+            var list = detailModel.GetHavetodoMain(LoginAccount.Contrast_Account.ID);
             return View(list);
         }
 

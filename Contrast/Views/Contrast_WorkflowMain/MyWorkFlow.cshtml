@@ -12,9 +12,9 @@
 }
 @model List<Entity.Contrast_WorkflowMain>
 <div>
-            <input type="button" value="返回" onclick="window.location.href='@Url.Action("ApprovalManager", "Contrast_WorkflowMain")'" class="input_button" />
-        </div>
-        <br />
+    <input type="button" value="返回" onclick="window.location.href='@Url.Action("ApprovalManager", "Contrast_WorkflowMain")'" class="input_button" />
+</div>
+<br />
 <div>
     <table class="Tab_list" cellpadding="0" cellspacing="0">
         <tr>
@@ -38,7 +38,7 @@
         {
             <tr>
                 <td>
-                   <a href="@Url.Action("Detail","Contrast_WorkflowMain", new { ID = item.ID })">@item.ID</a>
+                    <a href="@Url.Action("Detail", "Contrast_WorkflowMain", new { ID = item.ID })">@item.ID</a>
                 </td>
                 <td>
                     @item.CreateTime
@@ -51,8 +51,15 @@
                 </td>
                 <td>
                     @if (item.State == 0)
-                    { 
-                        @item.Contrast_Workflow.Contrast_Account.Name
+                    {
+                        if (item.Contrast_Workflow.Contrast_Account == null)
+                        {
+                            @item.Contrast_Account.Name
+                        }
+                        else
+                        { 
+                            @item.Contrast_Workflow.Contrast_Account.Name
+                        }
                     }
                 </td>
                 <td>
@@ -66,7 +73,7 @@
                             break;
                         case 0:
                         @:进行中
-                            break;
+                                                break;
                     }
                 </td>
             </tr>            

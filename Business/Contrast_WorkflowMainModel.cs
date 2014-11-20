@@ -26,7 +26,7 @@ namespace Business
         /// <returns></returns>
         public List<Contrast_WorkflowMain> GetAgencyList_BYAccountID(int AID)
         {
-            var list = List().Where(a => a.Contrast_Workflow.Contrast_AccountID == AID).OrderByDescending(a => a.CreateTime).ToList();
+            var list = List().Where(a => a.Contrast_Workflow.Contrast_AccountID == AID || (a.Contrast_Workflow.Contrast_Account == null && a.Contrast_AccountID == AID)).OrderByDescending(a => a.CreateTime).ToList();
             return list;
         }
 
@@ -86,7 +86,7 @@ namespace Business
                     if (status == 0)
                     {
                         contrast_WorkflowMain.Contrast_WorkflowID = null;
-                        contrast_WorkflowMain.State =2;
+                        contrast_WorkflowMain.State = 2;
                     }
                     else
                     {
